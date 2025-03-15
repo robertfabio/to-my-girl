@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Nicole Sâmila ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            animation: aparecer 1.5s ease-out;
+        }
+
+        h1 {
+            color: #ff4b6e;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .mensagem {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .nome-especial {
+            color: #ff4b6e;
+            font-weight: bold;
+            font-size: 1.4rem;
+            animation: brilhar 2s infinite;
+        }
+
+        .coracao {
+            font-size: 3rem;
+            color: #ff4b6e;
+            animation: pulsar 1s infinite;
+            cursor: pointer;
+        }
+
+        .botoes-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        @keyframes pulsar {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes aparecer {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes brilhar {
+            0% { text-shadow: 0 0 5px #ff4b6e; }
+            50% { text-shadow: 0 0 20px #ff4b6e; }
+            100% { text-shadow: 0 0 5px #ff4b6e; }
+        }
+
+        .botao {
+            background: #ff4b6e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin: 10px;
+        }
+
+        .botao:hover {
+            transform: scale(1.1);
+        }
+
+        .escondido {
+            display: none;
+        }
+
+        .mensagem-poetica {
+            font-style: italic;
+            color: #666;
+            margin: 20px 0;
+            padding: 10px;
+            border-left: 3px solid #ff4b6e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Para <span class="nome-especial">Nicole Sâmila</span></h1>
+        <div class="mensagem">
+            <p>Meu bem, você ilumina todos os meus dias com sua presença! 🌹</p>
+            <p>Cada momento ao seu lado é como um sonho realizado. 🌟</p>
+            <div class="mensagem-poetica">
+                "Como as estrelas enfeitam o céu,
+                Você, Nicole, enfeita minha vida.
+                Seu sorriso é minha luz,
+                Seu amor, minha energia."
+            </div>
+        </div>
+        <div class="coracao" onclick="mostrarMais()">❤️</div>
+        <div id="mensagem-extra" class="escondido">
+            <p>Nicole, você é a razão do meu sorriso todos os dias.</p>
+            <p>Seu jeito único de ser me encanta cada vez mais! 💖</p>
+            <p>Te amo mais que tudo nesse mundo! 🌹</p>
+        </div>
+        <div class="botoes-container">
+            <button class="botao" onclick="mostrarMensagemEspecial()">Mensagem Especial</button>
+            <button class="botao" onclick="mostrarSegredo()">Segredo para Você</button>
+        </div>
+    </div>
+
+    <script>
+        function mostrarMais() {
+            const mensagemExtra = document.getElementById('mensagem-extra');
+            mensagemExtra.style.display = mensagemExtra.style.display === 'none' || mensagemExtra.style.display === '' ? 'block' : 'none';
+        }
+
+        function mostrarMensagemEspecial() {
+            alert('Você é a pessoa mais incrível que já conheci! Cada dia ao seu lado é uma nova razão para sorrir! 💕');
+        }
+
+        function mostrarSegredo() {
+            alert('Sabia que cada vez que olho para você, meu coração dispara? Você é meu amor mais lindo, Nicole! ❤️');
+        }
+
+        // Array de mensagens carinhosas
+        const mensagensCarinhosas = [
+            '❤️ Nicole, você é perfeita!',
+            '💖 Seu sorriso ilumina meu mundo!',
+            '✨ Você é meu presente mais precioso!',
+            '🌟 Te amo mais a cada dia!',
+            '💝 Você é meu amor mais lindo!'
+        ];
+
+        // Cria corações flutuantes com mensagens
+        setInterval(() => {
+            const coracao = document.createElement('div');
+            coracao.innerHTML = '❤️';
+            coracao.style.position = 'fixed';
+            coracao.style.left = Math.random() * 100 + 'vw';
+            coracao.style.top = '100vh';
+            coracao.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            coracao.style.opacity = '0.6';
+            coracao.style.animation = 'subir 15s linear';
+            coracao.style.cursor = 'pointer';
+            
+            // Adiciona mensagem ao passar o mouse
+            coracao.onmouseover = () => {
+                const mensagem = mensagensCarinhosas[Math.floor(Math.random() * mensagensCarinhosas.length)];
+                alert(mensagem);
+            };
+            
+            document.body.appendChild(coracao);
+
+            setTimeout(() => {
+                coracao.remove();
+            }, 15000);
+        }, 2000);
+
+        // Animação dos corações subindo
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes subir {
+                from {
+                    transform: translateY(0);
+                }
+                to {
+                    transform: translateY(-100vh);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html> 
