@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Meu Amor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="roses.css">
+    <link rel="stylesheet" href="roses-animations.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <canvas id="confetti"></canvas>
+
+    <header>
+        <div class="heart" style="top: 20%; left: 20%;"></div>
+        <div class="heart" style="top: 70%; left: 80%;"></div>
+        <div class="heart" style="top: 40%; left: 60%;"></div>
+        <div class="heart" style="top: 80%; left: 30%;"></div>
+        <div class="heart" style="top: 10%; left: 90%;"></div>
+
+        <h1>Para Meu Amor</h1>
+        <p class="subtitle typing-effect">Porque você merece algo especial...</p>
+        <a href="#memories" class="btn scroll-btn">Começar Nossa Jornada</a>
+    </header>
+
+    <section id="memories" class="container">
+        <h2 class="section-title">Nossos Momentos Especiais</h2>
+        <div class="memories">
+            <div class="memory-card">
+                <div class="memory-img">Adicione uma foto aqui</div>
+                <div class="memory-content">
+                    <h3 class="memory-title">Nosso Primeiro Encontro</h3>
+                    <p class="memory-date">16 de Janeiro de 2025</p>
+                    <p class="memory-text">Aquele dia em que nos conhecemos e tudo mudou para sempre. Seu sorriso iluminou meu mundo de uma forma que eu nunca imaginei ser possível.</p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-img">Adicione uma foto aqui</div>
+                <div class="memory-content">
+                    <h3 class="memory-title">Nossa Primeira Vez</h3>
+                    <p class="memory-date">25 de Janeira de 2025</p>
+                    <p class="memory-text">Aquele momento mágico quando nossos corpos se encontraram pela primeira vez. Meu coração batia tão forte que pensei que você poderia ouvi-lo.</p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-img">Adicione uma foto aqui</div>
+                <div class="memory-content">
+                    <h3 class="memory-title">O pedido de namoro</h3>
+                    <p class="memory-date">04 de Fevereiro de 2025</p>
+                    <p class="memory-text">O filme que era ruim e mesmo assim foi um momento muito especial criando memórias que durarão para sempre. Cada momento ao seu lado é uma aventura incrível. O momento do anel que você foi bem lesadinha kkkkkkkkkkkkkk</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reasons" class="container">
+        <h2 class="section-title">Razões Por Que Te Amo</h2>
+        <div class="reasons">
+            <div class="reason-item">
+                <div class="reason-number">01</div>
+                <p class="reason-text">Seu sorriso ilumina até o dia mais escuro. Quando você sorri, todo o mundo parece mais brilhante e todos os problemas desaparecem.</p>
+            </div>
+
+            <div class="reason-item">
+                <div class="reason-number">02</div>
+                <p class="reason-text">Sua bondade e compaixão pelos outros me inspiram a ser uma pessoa melhor todos os dias.</p>
+            </div>
+
+            <div class="reason-item">
+                <div class="reason-number">03</div>
+                <p class="reason-text">A forma como você me entende, mesmo quando nem eu mesma me entendo. Você conhece meu coração melhor do que ninguém.</p>
+            </div>
+
+            <div class="reason-item">
+                <div class="reason-number">04</div>
+                <p class="reason-text">Sua força e determinação diante dos desafios. Você nunca desiste, e isso me dá força para continuar também.</p>
+            </div>
+
+            <div class="reason-item">
+                <div class="reason-number">05</div>
+                <p class="reason-text">O jeito como você me faz sentir seguro e amado, como se eu fosse a pessoa mais especial do mundo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="message" class="container">
+        <h2 class="section-title">Uma Mensagem Para Você</h2>
+        <div class="message">
+            <p class="message-text">
+                Desde que você entrou na minha vida, tudo ficou mais colorido, mais alegre, mais cheio de significado. 
+                Cada momento ao seu lado é um tesouro que guardo com carinho no meu coração. 
+                Você me faz querer ser uma pessoa melhor a cada dia, me inspira a sonhar mais alto e me dá forças para superar qualquer obstáculo.
+                <br><br>
+                Não consigo imaginar minha vida sem você, sem seu sorriso, sem seu abraço, sem seu amor. 
+                Você é meu presente mais precioso, meu porto seguro, minha melhor amiga, meu amor verdadeiro.
+                <br><br>
+                Te amo mais do que palavras podem expressar, e prometo te amar cada dia mais, por todos os dias da minha vida.
+            </p>
+            <p class="signature">Com todo meu amor,</p>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-text">Feito com <span class="heart-icon">♥</span> para você</p>
+    </footer>
+
+    <div class="music-control" id="musicControl">
+        <i class="music-icon">♫</i>
+    </div>
+    
+    <!-- Botão para mostrar as rosas -->
+    <button id="loveButton" class="love-button">Mostrar Rosas</button>
+    
+    <!-- Container para as rosas -->
+    <div id="rosesContainer" class="roses-container"></div>
+    
+    <!-- Mensagem de amor -->
+    <div id="loveMessage" class="love-message">
+        <h2>Eu Te Amo <span class="pulsing-heart">♥</span></h2>
+        <p>Você é a pessoa mais especial do mundo para mim. Cada momento ao seu lado é um presente que guardo com carinho no meu coração.</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+    <script src="script.js"></script>
+    <script src="roses.js"></script>
+</body>
+</html>

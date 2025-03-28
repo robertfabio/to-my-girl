@@ -1,0 +1,699 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #ff6b6b;
+    --secondary-color: #f9f7f7;
+    --accent-color: #ff8e8e;
+    --text-color: #2b2b2b;
+    --transition-time: 0.5s;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255,107,107,0.1) 0%, rgba(255,142,142,0.1) 100%);
+}
+
+/* Efeito de coração flutuante */
+.heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color);
+    transform: rotate(45deg);
+    animation: float 4s ease-in-out infinite;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 5px rgba(255,107,107,0.5));
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart:before {
+    top: -15px;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    left: -15px;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: rotate(45deg) translateY(0);
+    }
+    50% {
+        transform: rotate(45deg) translateY(-20px);
+    }
+}
+
+/* Título principal com efeito de brilho */
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 2s ease-in-out, glow 2s ease-in-out infinite alternate;
+    position: relative;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--primary-color), 0 0 20px var(--primary-color);
+    }
+    to {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--primary-color), 0 0 40px var(--primary-color);
+    }
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: slideUp 1s ease-in-out 1s forwards;
+}
+
+/* Botão com efeito de pulsação */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all var(--transition-time);
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 2s forwards, pulse 2s infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.btn:hover:before {
+    left: 100%;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 7px 20px rgba(255, 107, 107, 0.6);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+    }
+}
+
+/* Seções com efeito de aparecimento */
+section {
+    padding: 80px 0;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-in-out;
+    position: relative;
+}
+
+section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* Cards de memórias com efeito de hover 3D */
+.memories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.memory-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-time);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.memory-card:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.memory-img {
+    width: 100%;
+    height: 200px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 1.2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.memory-img:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,107,107,0.3) 0%, rgba(255,142,142,0.3) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.memory-card:hover .memory-img:before {
+    opacity: 1;
+}
+
+.memory-content {
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.memory-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.memory-card:hover .memory-title {
+    transform: translateX(5px);
+}
+
+.memory-date {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.memory-date:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.memory-card:hover .memory-date:after {
+    width: 100%;
+}
+
+.memory-text {
+    line-height: 1.6;
+}
+
+/* Lista de razões com efeito de destaque */
+.reasons {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.reason-item {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-time);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.reason-item:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.reason-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.reason-item:hover:before {
+    width: 100%;
+    opacity: 0.1;
+}
+
+.reason-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.reason-item:hover .reason-number {
+    transform: scale(1.1);
+}
+
+.reason-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+/* Mensagem com efeito de papel */
+.message {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    background-image: linear-gradient(#f9f7f7 1px, transparent 1px), linear-gradient(90deg, #f9f7f7 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: center center;
+}
+
+.message:before,
+.message:after {
+    content: "\201C";
+    font-family: 'Dancing Script', cursive;
+    font-size: 5rem;
+    color: var(--primary-color);
+    opacity: 0.3;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.message:before {
+    top: 10px;
+    left: 20px;
+}
+
+.message:after {
+    content: "\201D";
+    bottom: -20px;
+    right: 20px;
+}
+
+.message:hover:before {
+    transform: translateY(-5px) rotate(-10deg);
+    opacity: 0.5;
+}
+
+.message:hover:after {
+    transform: translateY(5px) rotate(10deg);
+    opacity: 0.5;
+}
+
+.message-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--primary-color);
+    transform: rotate(-5deg);
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.signature:hover {
+    transform: rotate(0deg) scale(1.1);
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+
+/* Rodapé com efeito de onda */
+footer {
+    text-align: center;
+    padding: 30px 0;
+    background-color: var(--primary-color);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+footer:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.footer-text {
+    font-size: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.heart-icon {
+    color: white;
+    font-size: 1.2rem;
+    margin: 0 5px;
+    animation: pulse 1s infinite;
+    display: inline-block;
+}
+
+/* Controle de música com efeito de brilho */
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    background-color: var(--primary-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all var(--transition-time);
+    animation: pulse 2s infinite;
+}
+
+.music-control:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+.music-icon {
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Efeito de digitação */
+.typing-effect {
+    overflow: hidden;
+    border-right: 3px solid var(--primary-color);
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--primary-color) }
+}
+
+/* Efeito de confete */
+canvas#confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    pointer-events: none;
+    display: none;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efeito de brilho para imagens */
+.glow-on-hover {
+    position: relative;
+    overflow: hidden;
+}
+
+.glow-on-hover:after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.glow-on-hover:hover:after {
+    opacity: 0.3;
+    transform: scale(1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .memories {
+        grid-template-columns: 1fr;
+    }
+
+    .message {
+        padding: 30px 20px;
+    }
+
+    .message:before,
+    .message:after {
+        font-size: 3rem;
+    }
+}
+
+/* Animação de fundo gradiente */
+.gradient-bg {
+    background: linear-gradient(-45deg, #ff6b6b, #ff8e8e, #ffb88e, #ff6b6b);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Efeito de zoom suave nas imagens */
+.zoom-effect {
+    overflow: hidden;
+}
+
+.zoom-effect img {
+    transition: transform 0.5s ease;
+}
+
+.zoom-effect:hover img {
+    transform: scale(1.1);
+}
+
+/* Efeito de destaque para texto */
+.highlight-text {
+    position: relative;
+    display: inline-block;
+}
+
+.highlight-text:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background-color: rgba(255, 107, 107, 0.3);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.highlight-text:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Efeito de botão flutuante */
+.floating-btn {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Efeito de sombra colorida */
+.color-shadow {
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4), 
+                0 10px 30px rgba(255, 142, 142, 0.2);
+    transition: all 0.3s ease;
+}
+
+.color-shadow:hover {
+    box-shadow: 0 7px 25px rgba(255, 107, 107, 0.6), 
+                0 15px 40px rgba(255, 142, 142, 0.3);
+}
+
+/* Efeito de texto com brilho */
+.glowing-text {
+    text-shadow: 0 0 5px rgba(255, 107, 107, 0.5), 
+                0 0 10px rgba(255, 107, 107, 0.3);
+    transition: all 0.3s ease;
+}
+
+.glowing-text:hover {
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.7), 
+                0 0 20px rgba(255, 107, 107, 0.5), 
+                0 0 30px rgba(255, 107, 107, 0.3);
+}

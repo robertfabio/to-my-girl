@@ -1,0 +1,103 @@
+/* Animações adicionais para o efeito de rosas */
+
+/* Animação de queda das rosas */
+@keyframes fallDown {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(var(--rotation-end, 360deg));
+        opacity: 0;
+    }
+}
+
+/* Animação de balanço lateral */
+@keyframes sway {
+    0% {
+        transform: translateX(-20px);
+    }
+    100% {
+        transform: translateX(var(--sway-amount, 20px));
+    }
+}
+
+/* Animação de rotação */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animação para as pétalas */
+@keyframes floatDown {
+    0% {
+        transform: translateY(-50px) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) translateX(var(--float-offset, 50px));
+        opacity: 0;
+    }
+}
+
+/* Animação de giro para pétalas */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Estilo para pétalas */
+.petal {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8;
+    z-index: 9998;
+    pointer-events: none;
+    filter: drop-shadow(0 0 3px rgba(255, 51, 102, 0.3));
+}
+
+/* Melhorias para o efeito de brilho */
+.sparkle {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23FFD700"><path d="M12 0L14.59 8.41 23 11 14.59 13.59 12 22 9.41 13.59 1 11 9.41 8.41z"/></svg>');
+    filter: drop-shadow(0 0 5px var(--sparkle-color, #FFD700));
+    animation: sparkleAnim 1s ease-out forwards;
+}
+
+@keyframes sparkleAnim {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+    }
+    100% {
+        transform: scale(1.5) rotate(90deg);
+        opacity: 0;
+    }
+}
